@@ -1,0 +1,30 @@
+{
+  "name": "moodle-boost/moodleapi",
+  "description": "mdl api",
+  "version": "0.1.0",
+  "type": "library",
+  "keywords": [
+    "moodle",
+    "api"
+  ],
+  "time": "2021-10-05",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mazitov Artem",
+      "email": "mazitov_a_z@mail.ru",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "MoodleBoost\\MoodleApi\\": "src/"
+    }
+  }
+}
