@@ -98,7 +98,6 @@ class RestApi
     }
 
     /**
-     * TODO xml
      *
      * @param $raw
      * @return mixed
@@ -108,8 +107,9 @@ class RestApi
         switch ($this->format) {
             case 'json':
                 return json_decode($raw);
-            default:
             case 'xml':
+                return simplexml_load_string($raw);
+            default:
                 return $raw;
         }
     }
@@ -125,22 +125,23 @@ class RestApi
     }
 
     /**
-     * TODO xml
      * @return mixed
      */
     public function getAllMethods()
     {
-        $data = $this->query('core_webservice_get_site_info');
-        switch ($this->format) {
-            case 'json':
-                if (isset($data->functions)){
-                    return $data->functions;
-                } else {
-                    return $data;
-                }
-            default:
-            case 'xml':
-                return $data;
+        if ($this->format === 'xml'){
+            $switchFormat = true;
+            $this->format = 'json';
+        } else {
+            $switchFormat = false;
         }
+
+        $data = $this->query('core_webservice_get_site_info');
+
+        if ($switchFormat){
+            $this->format = 'xml';
+        }
+
+        return isset($data->functions) ? $data->functions : $data;
     }
 }
