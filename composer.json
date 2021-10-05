@@ -1,7 +1,7 @@
 {
   "name": "moodle-boost/moodleapi",
   "description": "mdl api",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "library",
   "keywords": [
     "moodle",
@@ -16,11 +16,12 @@
       "role": "Developer"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "require": {
     "php": ">=5.6",
     "ext-curl": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-simplexml": "*"
   },
   "autoload": {
     "psr-4": {
